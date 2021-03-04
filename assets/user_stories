@@ -1,1 +1,12 @@
+As a logged-out user, I want to be able to login.
+ 
+As a logged in user, I want to be able to create a new trip.
+ 
+As a logged in user, I want to be able to edit existing trips.
+ 
+    As a logged in user, I want to be able to propose and vote on trip dates.
+ 
+    As a logged in user, I want to be able to propose and vote on accommodations.
+ 
+    As a logged in user, I want to be able to propose and vote on things to do.
 
