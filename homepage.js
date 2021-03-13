@@ -9,8 +9,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
         })
 
         //sign-out button
-        document.querySelector('.sign-in-or-sign-out').innerHTML = `
-        <button class="text-pink-500 underline sign-out">Sign Out</button>
+        document.querySelector('.sign-out').innerHTML = `
+        <button class="text-black-500 underline sign-out m-3">Sign Out</button>
       `
        
       document.querySelector('.sign-out').addEventListener('click', function(event) {
@@ -50,21 +50,21 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
             document.querySelector('.trips').insertAdjacentHTML('beforeEnd',
-            `<div class="todo-${tripId} py-4 text-xl border-b-2 border-purple-500 w-full">
-            <a href="#" class="done p-2 text-sm bg-green-500 text-white">✓</a>
+            `<div class="trip-${tripId} p-4 border rounded-xl text-xl w-1/3 text-center bg-blue-500 hover:bg-blue-600 text-white">
             ${tripName}
           </div>`)
 
         }
 
         
-            
+
          
 
     } else {
       // Signed out
       console.log('signed out')
       document.querySelector('.signedin').classList.add('hidden')
+      //document.querySelector('.title').classList.add('hidden')
   
       // Initializes FirebaseUI Auth
       let ui = new firebaseui.auth.AuthUI(firebase.auth())
