@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         document.querySelector('.sign-in-or-sign-out').innerHTML = `
         <button class="text-pink-500 underline sign-out">Sign Out</button>
       `
-  
+       
       document.querySelector('.sign-out').addEventListener('click', function(event) {
         console.log('sign out clicked')
         firebase.auth().signOut()
@@ -20,11 +20,38 @@ firebase.auth().onAuthStateChanged(async function(user) {
       })
 
 
+
       console.log('signed in')
 
-        // will need to add what user sees when they are logged in - 
-            // list of created trips and option to create new trip 
-            // sign out button 
+
+         //option to create new trip 
+           
+
+        // list of created trips
+
+        let querySnapshot = await db.collection('trips').get()
+        console.log(`Number to todos in collection: ${querySnapshot.size}`)
+
+        let trips = querySnapshot.docs
+        for (let i=0; i< trips.length; i++){
+            let tripId = trips[i].id
+            let trip = trips[i].data()
+            let tripName = trip.name
+            //console.log(tripName)
+
+
+
+            document.querySelector('.trips').insertAdjacentHTML('beforeEnd',
+            `<div class="todo-${tripId} py-4 text-xl border-b-2 border-purple-500 w-full">
+            <a href="#" class="done p-2 text-sm bg-green-500 text-white">✓</a>
+            ${tripName}
+          </div>`)
+
+        }
+
+        
+            
+         
 
     } else {
       // Signed out
