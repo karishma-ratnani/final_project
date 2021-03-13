@@ -4,6 +4,35 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let db = firebase.firestore()
       console.log('signed in')
 
+
+      db.collection('users').doc(user.uid).set({
+        name: user.displayName,
+        email: user.email
+    })
+
+        //sign-out button
+    document.querySelector('.sign-in-or-sign-out').innerHTML = `
+        <button class="text-pink-500 underline sign-out">Sign Out</button>
+    `
+    
+    document.querySelector('.sign-out').addEventListener('click', function(event) {
+        console.log('sign out clicked')
+        firebase.auth().signOut()
+        document.location.href = 'homepage.html'
+        })
+
+        //homepage button
+    document.querySelector('.homepage').innerHTML = `
+        <button class="text-pink-500 underline homepage">Home</button>
+    `
+    
+    document.querySelector('.homepage').addEventListener('click', function(event) {
+        console.log('home clicked')
+        document.location.href = 'homepage.html'
+        })
+
+
+        //create trip button
       document.querySelector('button').addEventListener('click', async function(event) {
         event.preventDefault()
         console.log('Button clicked')
