@@ -25,7 +25,15 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
          //option to create new trip 
-           
+
+        document.querySelector('.button').addEventListener('click', async function(event) {
+        event.preventDefault()
+        console.log('Button clicked')
+        window.location = "addtrip.html"
+
+        })
+
+        
 
         // list of created trips
 
