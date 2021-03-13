@@ -10,7 +10,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         //sign-out button
         document.querySelector('.sign-out').innerHTML = `
-        <button class="text-black-500 underline sign-out m-3">Sign Out</button>
+        <button class="text-pink-500 underline sign-out m-3">Sign Out</button>
       `
        
       document.querySelector('.sign-out').addEventListener('click', function(event) {
@@ -50,7 +50,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
             document.querySelector('.trips').insertAdjacentHTML('beforeEnd',
-            `<div class="trip-${tripId} p-4 border rounded-xl text-xl w-1/3 text-center bg-blue-500 hover:bg-blue-600 text-white">
+            `<div class="trip-${tripId} p-4 border rounded-xl text-xl w-1/3 text-center bg-purple-500 hover:bg-purple-600 text-white">
             ${tripName}
           </div>`)
 
