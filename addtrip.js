@@ -33,7 +33,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
         //create trip button
-      document.querySelector('button').addEventListener('click', async function(event) {
+      document.querySelector('.button').addEventListener('click', async function(event) {
         event.preventDefault()
         console.log('Button clicked')
   
@@ -48,9 +48,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
           })
   
           let tripId = docRef.id
-          console.log(`new todo with ID ${tripId} created`)}
-
+          console.log(`new todo with ID ${tripId} created`)
+        
           window.location = "homepage.html"
+        }
+
+          
 
 
         })
