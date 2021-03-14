@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Details</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
+</head>
+
+<body>
+  <h1 class="title text-4xl text-center m-3 text-blue-500 font-bold w-full">Trip Details</h1>
+
+  <div class = "header flex">
+    <div class="homepage w-1/2 p-2"></div>
+    <div class="sign-in-or-sign-out w-1/2 text-right p-2"></div>
+</div>
+
+  <div class="px-16 bg-gray-100">
+    
+    <div class="md:w-full m-auto md:p-4"></div>
+    <img class="rounded-xl" src="https://thumbs.dreamstime.com/b/ready-summer-vacation-travel-background-d-rendering-114574299.jpg">
+    <div>
+    <div class="md:w-full p-2 space-y-8">
+      <h2 class="font-bold text-xl">Dates:</h2>
+      <p>Dec 5- Dec 8 (3 Votes) </p>
+      <p>Dec 10 - Dec 15 (5 votes)</p>
+      <button class="block mt-4 text-white bg-green-500 rounded px-4 py-2">Add New Date</button>
+      <h2 class="font-bold text-xl">Accommodations:</h2>
+      <button class="block mt-4 text-white bg-green-500 rounded px-4 py-2">Add New Accommodation</button>
+      <h2 class="font-bold text-xl">Things to Do:</h2>
+      <p>Museum X – $20 (3 votes)</p>
+      <p>Brewery Y - Free (5 votes)</p>
+      <button class="block mt-4 text-white bg-green-500 rounded px-4 py-2">Add New Item</button>
+    </div>
+
+ 
+<!-- Put the Firebase config here -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+  apiKey: "AIzaSyDJhYt5QZKz_Fu9OEmJhKyaXcu4zKIi6AY",
+  authDomain: "final-project-345a3.firebaseapp.com",
+  projectId: "final-project-345a3",
+  storageBucket: "final-project-345a3.appspot.com",
+  messagingSenderId: "18806877634",
+  appId: "1:18806877634:web:987e13d0010a6eac17ba5b"
+  } // replace
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="triptemplate.js"></script>
+</body>
+
+</html>

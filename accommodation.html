@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accommdations Details</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
+</head>
+
+<body>
+  <h1 class="title text-4xl text-center m-3 text-blue-500 font-bold w-full">Add Accommodation</h1>
+  <div class="px-16 bg-gray-100">
+    <div class="md:w-full m-auto md:p-4"></div>
+    <div class = "header flex">
+      <div class="triptemplate w-1/2 p-2"></div>
+      <div class="sign-in-or-sign-out w-1/2 text-right p-2"></div>
+
+  
+</div>
+<div class = "text-xl pt-10 pl-40 text-purple-500">Create new Accommodation:</div>
+<div class="py-8 px-40">Name:
+<form class= "w-full mt-4">
+    <input type="text" id="accommodationname" name="accommodationname" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+</form>
+</div>
+
+<div class="py-8 px-40">Price:
+<form class= "w-full mt-4">
+    <input type="text" id="accommodationprice" name="accommodationprice" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+</form>
+</div>
+
+<div class="py-8 px-40">Website:
+    <form class= "w-full mt-4">
+        <input type="text" id="accommodationwebsite" name="accommodationwebsite" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+    </form>
+    </div>
+
+​
+<button class= "button mx-40 my-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Add Accommodation</button>
+ 
+<!-- Put the Firebase config here -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+  apiKey: "AIzaSyDJhYt5QZKz_Fu9OEmJhKyaXcu4zKIi6AY",
+  authDomain: "final-project-345a3.firebaseapp.com",
+  projectId: "final-project-345a3",
+  storageBucket: "final-project-345a3.appspot.com",
+  messagingSenderId: "18806877634",
+  appId: "1:18806877634:web:987e13d0010a6eac17ba5b"
+  } // replace
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="accommodation.js"></script>
+</body>
+
+</html>
