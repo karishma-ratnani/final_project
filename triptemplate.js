@@ -31,31 +31,30 @@ firebase.auth().onAuthStateChanged(async function(user) {
           document.location.href = 'homepage.html'
           })
   
-    //option to create new trip 
+    //option to create new accommodation 
 
     document.querySelector('.button').addEventListener('click', async function(event) {
       event.preventDefault()
       console.log('Button clicked')
-      window.location = "accommmodation.html"
+      window.location = "accommodation.html"
 
       })
     
 // list of accommodations
 
 // let querySnapshot = await db.collection('accommodations').get()
+// console.log(`Number to accommodations in collection: ${querySnapshot.size}`)
 
 // let accommodations = querySnapshot.docs
 // for (let i=0; i< accommodations.length; i++){
-//     let accommId = accommodations[i].id
-//     let accommodations =accommodations[i].data()
-//     let accommodationsName = accommodations.name
-    
-
-
+//     let accommodationsId = accommodation[i].id
+//     let accommodation =accommodations[i].data()
+//     let accommodationsName = accommodation.Name
+//     // console.log(accommodationsName)
 
 //     document.querySelector('.accommodations').insertAdjacentHTML('beforeEnd',
-//     `<div class="trip-${tripId} p-4 border rounded-xl text-xl w-1/3 text-center bg-purple-500 hover:bg-purple-600 text-white">
-//     ${tripName}
+//     `<div class="accommodations-${accommodationsId} p-4 border rounded-xl text-xl w-1/3 text-center hover:bg-purple-600 text-white">
+//     ${accommodationsName}
 //   </div>`)
 
 // }

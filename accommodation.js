@@ -48,8 +48,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
           price: accommodationPrice,
           website: accommodationWebsite
         })
-
-        let tripId = docRef.id
+        let accommodationsId = docRef.id
+        console.log(`new todo with ID ${accommodationsId} created`)
+        
         
       
         window.location = "triptemplate.html"
