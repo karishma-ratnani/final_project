@@ -34,6 +34,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 // // list of accommodations
 
 let querySnapshot = await db.collection('accommodations').get()
+await db.collection(`votes`).add({votes: 0 })
         console.log(`Number to todos in collection: ${querySnapshot.size}`)
 
         let accommodations = querySnapshot.docs
@@ -44,29 +45,40 @@ let querySnapshot = await db.collection('accommodations').get()
             //console.log(accommodationName)
 
  document.querySelector('.accommodations').insertAdjacentHTML('beforeEnd',
-            `<div class="accommodations-${accommodationsId} py-4 text-xl border-b-2 border-purple-500 w-full">
-            <a href="#" class="done p-2 text-sm bg-green-500 text-white">✓</a>
-            ${accommodationName}
+            `<div class="accommodations-${accommodationsId} py-4 text-xl border-b-2 border-purple-500 w-full">${accommodationName} 
+            <a href="#" class="votes p-2 text-sm bg-blue-500 text-white">👍</a><span class= "votes"> 0</span>
+            
           </div>`)
-
-            // document.querySelector(`.accommodations-${accommodationId} .like-button`).addEventListener('click', async function(event) {
-            //   event.preventDefault()
-            //   let existingNumberOfLikes = document.querySelector(`.accommodation-${accommodationId} .likes`).innerHTML
-            //   let newNumberOfLikes = parseInt(existingNumberOfLikes) + 1
-            //   document.querySelector(`.accommodation-${accommodationId} .votes`).innerHTML = newNumberOfLikes
-            //   await db.collection('accommodations').doc(accommodationId).update({
-            //     likes: firebase.firestore.FieldValue.increment(1)
-            //   })
-
         }
-
+      //   let votes = document.querySelector(`.accommodations-${accommodationId} .votes`)
+      //   votes.addEventListener('click', async function(event) {
+      //     event.preventDefault()
+      //     // console.log(`accommodations ${accommodationId} like button clicked!`)
+      //     let currentUserId = firebase.auth().currentUser.uid
+  
+      //   let response = await fetch('/.netlify/functions/votes', {
+      //     method: 'VOTE',
+      //     body: JSON.stringify({
+      //       accommodationId: accommodationId,
+      //       userId: currentUserId
+      //     })
+      //   })
+      //   if (response.ok) {
+      //     let existingNumberofVotes = document.querySelector(`.accommodations-${accommodationId} .votes`).innerHTML
+      //     let newNumberofVotes = parseInt(existingNumberofVotes) + 1
+      //     document.querySelector(`.accommodations-${accommodationId} .votes`).innerHTML = newNumberofVotes
+      //   }
+      // })     
+      
 //option to create new accommodation 
 
 document.querySelector('.button').addEventListener('click', async function(event) {
   event.preventDefault()
   console.log('Button clicked')
   window.location = "accommodation.html"
-})}
+})
+    }
+  
 else {
   // Signed out
   console.log('signed out')
