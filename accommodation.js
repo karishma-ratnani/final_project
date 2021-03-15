@@ -48,8 +48,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
           price: accommodationPrice,
           website: accommodationWebsite
         })
-        let accommodationsId = docRef.id
-        console.log(`new todo with ID ${accommodationsId} created`)
+        let accommodationId = docRef.id
+        console.log(`new todo with ID ${accommodationId} created`)
         
         
       

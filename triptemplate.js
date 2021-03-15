@@ -30,35 +30,43 @@ firebase.auth().onAuthStateChanged(async function(user) {
           console.log('home clicked')
           document.location.href = 'homepage.html'
           })
-  
-    //option to create new accommodation 
+ 
+// // list of accommodations
 
-    document.querySelector('.button').addEventListener('click', async function(event) {
-      event.preventDefault()
-      console.log('Button clicked')
-      window.location = "accommodation.html"
+let querySnapshot = await db.collection('accommodations').get()
+        console.log(`Number to todos in collection: ${querySnapshot.size}`)
 
-      })
-    
-// list of accommodations
+        let accommodations = querySnapshot.docs
+        for (let i=0; i< accommodations.length; i++){
+            let accommodationsId = accommodations[i].id
+            let accommodation = accommodations[i].data()
+            let accommodationName = accommodation.name
+            //console.log(accommodationName)
 
-// let querySnapshot = await db.collection('accommodations').get()
-// console.log(`Number to accommodations in collection: ${querySnapshot.size}`)
+ document.querySelector('.accommodations').insertAdjacentHTML('beforeEnd',
+            `<div class="accommodations-${accommodationsId} py-4 text-xl border-b-2 border-purple-500 w-full">
+            <a href="#" class="done p-2 text-sm bg-green-500 text-white">✓</a>
+            ${accommodationName}
+          </div>`)
 
-// let accommodations = querySnapshot.docs
-// for (let i=0; i< accommodations.length; i++){
-//     let accommodationsId = accommodation[i].id
-//     let accommodation =accommodations[i].data()
-//     let accommodationsName = accommodation.Name
-//     // console.log(accommodationsName)
+            // document.querySelector(`.accommodations-${accommodationId} .like-button`).addEventListener('click', async function(event) {
+            //   event.preventDefault()
+            //   let existingNumberOfLikes = document.querySelector(`.accommodation-${accommodationId} .likes`).innerHTML
+            //   let newNumberOfLikes = parseInt(existingNumberOfLikes) + 1
+            //   document.querySelector(`.accommodation-${accommodationId} .votes`).innerHTML = newNumberOfLikes
+            //   await db.collection('accommodations').doc(accommodationId).update({
+            //     likes: firebase.firestore.FieldValue.increment(1)
+            //   })
 
-//     document.querySelector('.accommodations').insertAdjacentHTML('beforeEnd',
-//     `<div class="accommodations-${accommodationsId} p-4 border rounded-xl text-xl w-1/3 text-center hover:bg-purple-600 text-white">
-//     ${accommodationsName}
-//   </div>`)
+        }
 
-// }
-}
+//option to create new accommodation 
+
+document.querySelector('.button').addEventListener('click', async function(event) {
+  event.preventDefault()
+  console.log('Button clicked')
+  window.location = "accommodation.html"
+})}
 else {
   // Signed out
   console.log('signed out')
@@ -78,4 +86,3 @@ else {
   ui.start('.sign-in-or-sign-out', authUIConfig)
 }
 })
-
