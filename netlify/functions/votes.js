@@ -3,18 +3,15 @@ let firebase = require('./firebase')
 exports.handler = async function(event) {
   let db = firebase.firestore()
   let body = JSON.parse(event.body)
-  let accommodationId = body.accommodationsId
+  let accommodationsId = body.accommodationsId
   let userId = body.userId
   
-//   console.log(`post: ${postId}`)
-//   console.log(`user: ${userId}`)
+  let querySnapshot = await db.collection('votes').where('accommodationsId', '==', accommodationsId).where('userId', '==', userId).get()
+  let numberOfVotes = querySnapshot.size
 
-  let querySnapshot = await db.collection('votes').where('accommodationId', '==', accommodationId).where('userId', '==', userId).get()
-  let numberofVotes = querySnapshot.size
-
-  if (nuberofVotes == 0) {
+  if (numberOfVotes == 0) {
     await db.collection('votes').add({
-      accommodationId: accommodationId,
+      accommodationsId: accommodationsId,
       userId: userId
     })
     return { statusCode: 200 }

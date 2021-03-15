@@ -41,21 +41,44 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let accommodationPrice = document.querySelector('#accommodationprice').value
       let accommodationWebsite = document.querySelector('#accommodationwebsite').value
 
-      if (accommodationName.length > 0) {
-        
-        let docRef = await db.collection('accommodations').add({
-          name: accommodationName,
-          price: accommodationPrice,
-          website: accommodationWebsite
+let response = await fetch('http://localhost:8888/.netlify/functions/accomm', {
+        method: 'POST',
+        body: JSON.stringify({
+          id: accommodationsId,                                                                    
+      username: accommodationsData.username
+          
         })
-        let accommodationId = docRef.id
-        console.log(`new todo with ID ${accommodationId} created`)
+      })
+   
+
+//     let response = await fetch('http://localhost:8888/.netlify/functions/accomm')
+//     let posts = await response.json()
+//     for (let i=0; i<posts.length; i++) {
+//       let post = posts[i]
+//       renderPost(post)
+//     }
+
+
+
+
+
+//       if (accommodationName.length > 0) {
+        
+//         let docRef = await db.collection('accommodations').add({
+//           name: accommodationName,
+//           price: accommodationPrice,
+//           website: accommodationWebsite
+//         })
+//         let accommodationsId = docRef.id
+//         console.log(`new todo with ID ${accommodationsId} created`)
         
         
       
-        window.location = "triptemplate.html"
-      }
+//         window.location = "triptemplate.html"
+//       }
 
+      
+        
         
 
 
