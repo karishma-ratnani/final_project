@@ -54,8 +54,13 @@ firebase.auth().onAuthStateChanged(async function(user) {
             ${tripName}
           </div>`)
 
-        }
-
+          document.querySelector('.trips').addEventListener('click', async function(event) {
+            event.preventDefault()
+            console.log('trips clicked')
+            window.location = "triptemplate.html"
+        })
+      }
+      
         
 
          
