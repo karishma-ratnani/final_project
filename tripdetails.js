@@ -51,7 +51,7 @@ let db = firebase.firestore()
         //checking for trip id that matches get parameter
         if (tripIds == tripId) {
             var tripLocationOfficial = trip.location
-            document.querySelector('.triptitle').insertAdjacentHTML('beforeEnd',
+            document.querySelector('.title').insertAdjacentHTML('beforeEnd',
             `<div> Hot Spots - ${tripLocationOfficial} </div>`)
 
         }

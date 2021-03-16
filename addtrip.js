@@ -47,7 +47,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             })
   
           let tripId = docRef.id
-          console.log(`new trip with ID ${tripId} created`)
+          console.log(`new destination with ID ${tripId} created`)
         
           window.location = "homepage.html"
         }
