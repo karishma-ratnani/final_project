@@ -10,18 +10,49 @@
 </head>
 
 <body>
+
   <div class = "sign-out"></div>
 
-  <div><h1 class="title text-4xl text-center m-3 text-blue-500 font-bold">Plan-A-Trip</h1></div>
+  <div> <h1 class="title text-4xl text-center m-3 text-blue-500 font-bold">Plan-A-Trip</h1> </div>
 
   <div class="sign-in-or-sign-out"></div>
-    
 
   <div class = "signedin">
 
         <button class= "button bg-green-500 hover:bg-green-600 text-white mx-16 px-8 py-2 rounded-xl">Create New</button>
-        <div class= "trips p-16 sm:flex sm:flex-wrap"> </div>
-    
+
+        <div class= "trips"> </div>
+        
   </div>
+
+
+ <!-- Put the Firebase config here -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+    apiKey: "AIzaSyDJhYt5QZKz_Fu9OEmJhKyaXcu4zKIi6AY",
+    authDomain: "final-project-345a3.firebaseapp.com",
+    projectId: "final-project-345a3",
+    storageBucket: "final-project-345a3.appspot.com",
+    messagingSenderId: "18806877634",
+    appId: "1:18806877634:web:987e13d0010a6eac17ba5b"
+    } // replace
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="homepage.js"></script>
+
+
+
+</body>
+
+</html>
 
  

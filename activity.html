@@ -12,44 +12,40 @@
  
  <body>
 
-
-
-<div class = "sign-out"></div>
-
-<div><h1 class="title text-4xl text-center m-3 text-blue-500 font-bold">Plan-A-Trip</h1></div>
-
-<div class="sign-in-or-sign-out"></div>
-
-<div class = "activity"> 
-
-    <div class = "text-xl pt-10 pl-40 text-purple-500">Create new activity:</div>
-    
-    <div class = "activityForm"> 
-       <div class="py-8 px-40">Name:
-        <form class= "w-full mt-4">
-            <input type="text" id="activityName" name="activityName" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
-        </form>
-        </div>
-
-        <div class="py-8 px-40">Price:
-        <form class= "w-full mt-4">
-            <input type="text" id="activityPrice" name="activityPrice" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
-        </form>
-        </div>
-
-
-        <div class="py-8 px-40">Website:
-            <form class= "w-full mt-4">
-                <input type="text" id="activityWeb" name="activityWeb" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
-            </form>
-            </div>
-
-        <button class="submitActivity mx-60 my-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl"> Add Activity </button>
-
-
+    <div class = "header flex">
+        <div class="homepage w-1/2 p-2"></div>
+        <div class="sign-out w-1/2 text-right p-2"></div>
     </div>
+    
+    <div><h1 class="title text-4xl text-center m-3 text-blue-500 font-bold w-full">Plan-A-Trip</h1></div>
+    <div><h1 class="triptitle text-4xl text-center m-3 text-blue-500 font-bold w-full"></h1></div>
+    
+     <div class="sign-in-or-sign-out"></div>
 
-</div> 
+
+    <div class = "activity"> 
+
+        <div class = "text-xl pt-10 pl-40 text-purple-500">Add activity:</div>
+    
+        <div class = "activityForm"> 
+            <div class="py-8 px-40">Name:
+                <form class= "w-full mt-4">
+                    <input type="text" id="activityName" name="activityName" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+                </form>
+             </div>
+
+            <div class="py-8 px-40">Image
+                <form class= "w-full mt-4">
+                    <input type="text" id="image-url" name="image-url" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+                 </form>
+             </div>
+
+
+            <button class="submitActivity mx-60 my-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl"> Add Activity </button>
+
+         </div>
+
+    </div> 
 
 
  

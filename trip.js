@@ -19,11 +19,21 @@ firebase.auth().onAuthStateChanged(async function(user) {
         document.querySelector('.sign-out').innerHTML = `
         <button class="sign-out text-pink-500 underline p-2 w-full text-right">Sign Out</button>`
        
-      document.querySelector('.sign-out').addEventListener('click', function(event) {
-        console.log('sign out clicked')
-        firebase.auth().signOut()
-        document.location.href = 'homepage.html'
-      })
+        document.querySelector('.sign-out').addEventListener('click', function(event) {
+            console.log('sign out clicked')
+            firebase.auth().signOut()
+            document.location.href = 'homepage.html'
+         })
+
+
+        //homepage button
+        document.querySelector('.homepage').innerHTML = `
+        <button class="text-pink-500 underline homepage">Home</button>`
+  
+        document.querySelector('.homepage').addEventListener('click', function(event) {
+            console.log('home clicked')
+            document.location.href = 'homepage.html'
+        })
 
     
 
@@ -35,12 +45,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
             console.log(tripIds)
             let trip = trips[i].data()
             console.log(trip)
-            let tripName = trip.name
+            let tripLocation = trip.location
             //checking for trip id that matches get parameter
             if (tripIds == tripId) {
-                var tripNameOfficial = trip.name
+                var tripLocationOfficial = trip.location
                 document.querySelector('.triptitle').insertAdjacentHTML('beforeEnd',
-        `<div> ${tripNameOfficial} </div>`)
+                `<div> ${tripLocationOfficial} </div>`)
             }
             
         }
@@ -55,13 +65,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
            let activityName = activities.name
 
            document.querySelector('.activityinfo').insertAdjacentHTML('beforeEnd', 
-        `<div> ${activityName} </div>`)
+            `<div> ${activityName} </div>`)
           
           }
            
 
-          document.querySelector('.addActivity').insertAdjacentHTML('beforeEnd',
-            `<a href="file:///Users/karishmaratnani/Code/final_project//activity.html?tripId=${tripId}">Add Activity</a>`)
+        document.querySelector('.addActivity').insertAdjacentHTML('beforeEnd',
+        `<a href="file:///Users/karishmaratnani/Code/final_project//activity.html?tripId=${tripId}">Add Activity</a>`)
+
             
     
 

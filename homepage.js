@@ -1,5 +1,6 @@
 firebase.auth().onAuthStateChanged(async function(user) {
-    if (user) {
+
+  if (user) {
       // Signed in
         let db = firebase.firestore()
         console.log('signed in')
@@ -7,26 +8,26 @@ firebase.auth().onAuthStateChanged(async function(user) {
         db.collection('users').doc(user.uid).set({
             name: user.displayName,
             email: user.email
+        
         })
 
         //sign-out button
         document.querySelector('.sign-out').innerHTML = `
         <button class="sign-out text-pink-500 underline p-2 w-full text-right">Sign Out</button>`
        
-      document.querySelector('.sign-out').addEventListener('click', function(event) {
-        console.log('sign out clicked')
-        firebase.auth().signOut()
-        document.location.href = 'homepage.html'
-      })
+        document.querySelector('.sign-out').addEventListener('click', function(event) {
+          console.log('sign out clicked')
+          firebase.auth().signOut()
+          document.location.href = 'homepage.html'
+         })
 
 
          //option to create new trip 
 
         document.querySelector('.button').addEventListener('click', async function(event) {
-        event.preventDefault()
-        console.log('Button clicked')
-        window.location = "addtrip.html"
-
+          event.preventDefault()
+          console.log('Button clicked')
+          window.location = "addtrip.html"
         })
 
       
@@ -40,30 +41,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
         for (let i=0; i< trips.length; i++){
             let tripId = trips[i].id
             let trip = trips[i].data()
-            let tripName = trip.name
+            let tripLocation = trip.location
             //console.log(tripName)
             
 
             document.querySelector('.trips').insertAdjacentHTML('beforeEnd',
-            `<a href="file:///Users/karishmaratnani/Code/final_project//trip.html?tripId=${tripId}">${tripName}</a>`)
             
+            `<a href="file:///Users/karishmaratnani/Code/final_project//trip.html?tripId=${tripId}">${tripLocation}</a>`)
             
-
-          
-      
-            
-          // })
-
-            
-          
-        // })
-      
-      
-        
-      }
+        }
 
     } else {
       // Signed out
+
       console.log('signed out')
       document.querySelector('.signedin').classList.add('hidden')
 
@@ -83,5 +73,5 @@ firebase.auth().onAuthStateChanged(async function(user) {
       ui.start('.sign-in-or-sign-out', authUIConfig)
     }
 
-  })
+})
   

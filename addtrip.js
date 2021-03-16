@@ -1,5 +1,6 @@
 firebase.auth().onAuthStateChanged(async function(user) {
     if (user) {
+
       // Signed in
       let db = firebase.firestore()
       console.log('signed in')
@@ -8,25 +9,23 @@ firebase.auth().onAuthStateChanged(async function(user) {
       db.collection('users').doc(user.uid).set({
         name: user.displayName,
         email: user.email
-    })
+        })
 
         //sign-out button
-    document.querySelector('.sign-in-or-sign-out').innerHTML = `
-        <button class="text-pink-500 underline sign-out">Sign Out</button>
-    `
+      document.querySelector('.sign-out').innerHTML = `
+        <button class="text-pink-500 underline sign-out">Sign Out</button>`
     
-    document.querySelector('.sign-out').addEventListener('click', function(event) {
+      document.querySelector('.sign-out').addEventListener('click', function(event) {
         console.log('sign out clicked')
         firebase.auth().signOut()
         document.location.href = 'homepage.html'
         })
 
         //homepage button
-    document.querySelector('.homepage').innerHTML = `
-        <button class="text-pink-500 underline homepage">Home</button>
-    `
+      document.querySelector('.homepage').innerHTML = `
+        <button class="text-pink-500 underline homepage">Home</button>`
     
-    document.querySelector('.homepage').addEventListener('click', function(event) {
+      document.querySelector('.homepage').addEventListener('click', function(event) {
         console.log('home clicked')
         document.location.href = 'homepage.html'
         })
@@ -37,29 +36,27 @@ firebase.auth().onAuthStateChanged(async function(user) {
         event.preventDefault()
         console.log('Button clicked')
   
-        let tripName = document.querySelector('#tripname').value
+        // let tripName = document.querySelector('#tripname').value
         let tripLocation = document.querySelector('#triplocation').value
 
-        if (tripName.length > 0) {
+        if (tripLocation.length > 0) {
           
           let docRef = await db.collection('trips').add({
-            name: tripName,
+            // name: tripName,
             location: tripLocation
-          })
+            })
   
           let tripId = docRef.id
           console.log(`new trip with ID ${tripId} created`)
         
           window.location = "homepage.html"
         }
-
-          
-
-
-        })
+    
+      })
 
 
     } else {
+
       // Signed out
       console.log('signed out')
   
@@ -77,5 +74,5 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // Starts FirebaseUI Auth
       ui.start('.sign-in-or-sign-out', authUIConfig)
     }
-  })
+})
   
