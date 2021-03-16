@@ -37,7 +37,7 @@ let db = firebase.firestore()
         document.location.href = 'homepage.html'
         })
 
-
+    //title
     let querySnapshot = await db.collection('trips').get()
     let trips = querySnapshot.docs
     console.log(trips)
@@ -83,10 +83,11 @@ let db = firebase.firestore()
     for (let i=0; i<activity.length; i++) {
       let activityId = activity[i].id
       let activityData = activity[i].data()
+      let activityName = activityData.activityName
       let activityImage = activityData.activityImage
-      let querySnapshot = await db.collection('likes').where('activityId', '==', activityId).get()
-      let activityNumberOfLikes = querySnapshot.size
-      renderPost(activityId, activityData, activityImage, activityNumberOfLikes)
+      let querySnapshot3 = await db.collection('likes').where('activityId', '==', activityId).get()
+      let activityNumberOfLikes = querySnapshot3.size
+      renderPost(activityId, activityName, activityImage, activityNumberOfLikes)
     }
 
     async function renderPost(activityId, activityName, activityImage, activityNumberOfLikes) {
