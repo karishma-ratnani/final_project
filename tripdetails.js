@@ -78,7 +78,7 @@ let db = firebase.firestore()
     })
 
     // 🔥 LAB STARTS HERE 🔥
-    let querySnapshot2 = await db.collection('activity').orderBy('created').get()
+    let querySnapshot2 = await db.collection('activity').where('activityTripId', '==', tripId).get()                                                                  
     let activity = querySnapshot2.docs
     for (let i=0; i<activity.length; i++) {
       let activityId = activity[i].id
@@ -113,13 +113,13 @@ let db = firebase.firestore()
           let currentUserId = firebase.auth().currentUser.uid
       
           let querySnapshot = await db.collection('likes')
-            .where('activityTripId', '==', activityId)
+            .where('activityId', '==', activityId)
             .where('userId', '==', currentUserId)
             .get()
       
           if (querySnapshot.size == 0) {
             await db.collection('likes').add({
-              activityTripId: activityId,
+              activityId: activityId,
               userId: currentUserId
             })
             let existingNumberOfLikes = document.querySelector(`.activity-${activityId} .likes`).innerHTML
