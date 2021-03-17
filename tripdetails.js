@@ -38,17 +38,12 @@ let db = firebase.firestore()
         })
 
     //title
-    let querySnapshot = await db.collection('trips').get()
-    let trips = querySnapshot.docs
-    //console.log(trips)
+    let response = await fetch(`http://localhost:8888/.netlify/functions/trip`)
+    let trips = await response.json()
     for (let i=0; i< trips.length; i++){
-        let tripIds = trips[i].id
-        //console.log(tripIds)
-        let trip = trips[i].data()
-        //console.log(trip)
-        let tripLocation = trip.location
-        //console.log(tripLocation)
-        //checking for trip id that matches get parameter
+        let trip = trips[i]
+        let tripIds = trip.tripId
+        let tripLocation = trips.location
         if (tripIds == tripId) {
             var tripLocationOfficial = trip.location
             document.querySelector('.title').insertAdjacentHTML('beforeEnd',
@@ -77,8 +72,8 @@ let db = firebase.firestore()
 
 
     //show all activities
-    let response = await fetch(`http://localhost:8888/.netlify/functions/activity?tripId=${tripId}`)
-    let activity = await response.json()
+    let response2 = await fetch(`http://localhost:8888/.netlify/functions/activity?tripId=${tripId}`)
+    let activity = await response2.json()
    
     for (let i=0; i<activity.length; i++) {
         let activities = activity[i]
