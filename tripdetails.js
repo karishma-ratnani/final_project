@@ -143,8 +143,6 @@ let db = firebase.firestore()
       
 
 
-    // 🔥 LAB ENDS HERE 🔥
-
   } else {
     // Signed out
     console.log('signed out')

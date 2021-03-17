@@ -37,22 +37,26 @@ firebase.auth().onAuthStateChanged(async function(user) {
         console.log('Button clicked')
   
         // let tripName = document.querySelector('#tripname').value
-        let tripLocation = document.querySelector('#triplocation').value
+        let tripLoc = document.querySelector('#triplocation').value
 
-        if (tripLocation.length > 0) {
-          
-          let docRef = await db.collection('trips').add({
-            // name: tripName,
-            location: tripLocation
-            })
+        let response = await fetch (`http://localhost:8888/.netlify/functions/addtrip`, {
+          method: 'POST',
+          body: JSON.stringify({
+          tripLocation: tripLoc
+
+          })
+         })
+
+        let json = await response.json()
+        console.log(json)
+        let location = json.location
+        let tripId = json.tripId
   
-          let tripId = docRef.id
           console.log(`new destination with ID ${tripId} created`)
         
           window.location = "homepage.html"
-        }
+        })
     
-      })
 
 
     } else {
