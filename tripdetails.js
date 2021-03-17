@@ -33,21 +33,21 @@ let db = firebase.firestore()
         <button class="text-pink-500 underline homepage">Home</button>`
     
       document.querySelector('.homepage').addEventListener('click', function(event) {
-        console.log('home clicked')
+       // console.log('home clicked')
         document.location.href = 'homepage.html'
         })
 
     //title
     let querySnapshot = await db.collection('trips').get()
     let trips = querySnapshot.docs
-    console.log(trips)
+    //console.log(trips)
     for (let i=0; i< trips.length; i++){
         let tripIds = trips[i].id
         //console.log(tripIds)
         let trip = trips[i].data()
-        console.log(trip)
+        //console.log(trip)
         let tripLocation = trip.location
-        console.log(tripLocation)
+        //console.log(tripLocation)
         //checking for trip id that matches get parameter
         if (tripIds == tripId) {
             var tripLocationOfficial = trip.location
@@ -68,8 +68,6 @@ let db = firebase.firestore()
         activityName: activityName,
         activityImage: activityImage, 
         activityTripId: activityTripId,
-
-        created: firebase.firestore.FieldValue.serverTimestamp()
       })
       let activityId = docRef.id // the newly created document's ID
       document.querySelector('#activityName').value = '' 
@@ -77,15 +75,19 @@ let db = firebase.firestore()
       renderPost(activityId, activityName, activityImage, activityNumberOfLikes)
     })
 
-    // 🔥 LAB STARTS HERE 🔥
-    let querySnapshot2 = await db.collection('activity').where('activityTripId', '==', tripId).get()                                                                  
-    let activity = querySnapshot2.docs
+
+    //show all activities
+    let response = await fetch(`http://localhost:8888/.netlify/functions/activity?tripId=${tripId}`)
+    let activity = await response.json()
+   
     for (let i=0; i<activity.length; i++) {
-      let activityId = activity[i].id
-      let activityData = activity[i].data()
-      let activityName = activityData.activityName
-      let activityImage = activityData.activityImage
+        let activities = activity[i]
+        let activityId = activities.activityId
+        let activityName = activities.activityName
+        let activityImage = activities.activityImage
+
       let querySnapshot3 = await db.collection('likes').where('activityId', '==', activityId).get()
+      console.log(querySnapshot3.size)
       let activityNumberOfLikes = querySnapshot3.size
       renderPost(activityId, activityName, activityImage, activityNumberOfLikes)
     }

@@ -33,18 +33,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
         // list of created trips
 
-        let querySnapshot = await db.collection('trips').get()
-        console.log(`Number of trips in collection: ${querySnapshot.size}`)
+        let response = await fetch(`http://localhost:8888/.netlify/functions/trip`)
+        let trips = await response.json()
 
-      
-        let trips = querySnapshot.docs
         for (let i=0; i< trips.length; i++){
-            let tripId = trips[i].id
-            let trip = trips[i].data()
+            let trip = trips[i]
+            let tripId = trip.tripId
             let tripLocation = trip.location
-            //console.log(tripName)
-            
-
+      
             document.querySelector('.trips').insertAdjacentHTML('beforeEnd',
             `
             <a href="tripdetails.html?tripId=${tripId}"><span class="font-bold text-3xl px-24 border border-gray-400 rounded bg-red-300"</span>${tripLocation}</a>
