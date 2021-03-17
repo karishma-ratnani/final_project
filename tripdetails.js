@@ -86,10 +86,10 @@ let db = firebase.firestore()
         let activityName = activities.activityName
         let activityImage = activities.activityImage
 
-      let querySnapshot3 = await db.collection('likes').where('activityId', '==', activityId).get()
-      console.log(querySnapshot3.size)
-      let activityNumberOfLikes = querySnapshot3.size
-      renderPost(activityId, activityName, activityImage, activityNumberOfLikes)
+        let response = await fetch(`http://localhost:8888/.netlify/functions/likes?activityId=${activityId}`)
+        let likes = await response.json()
+            let activityNumberOfLikes = likes.length
+            renderPost(activityId, activityName, activityImage, activityNumberOfLikes)
     }
 
     async function renderPost(activityId, activityName, activityImage, activityNumberOfLikes) {
