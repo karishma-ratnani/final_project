@@ -109,26 +109,26 @@ let db = firebase.firestore()
           console.log(`activity ${activityId} like button clicked!`)
           let currentUserId = firebase.auth().currentUser.uid
       
-          let querySnapshot = await db.collection('likes')
-            .where('activityId', '==', activityId)
-            .where('userId', '==', currentUserId)
-            .get()
-      
-          if (querySnapshot.size == 0) {
-            await db.collection('likes').add({
+          let response = await fetch (`http://localhost:8888/.netlify/functions/addlikes`, {
+            method: 'POST',
+            body: JSON.stringify({
               activityId: activityId,
               userId: currentUserId
             })
+          })
+
+          let json = await response.json()
+          console.log(json)
+
+            if (response.ok){
             let existingNumberOfLikes = document.querySelector(`.activity-${activityId} .likes`).innerHTML
             let newNumberOfLikes = parseInt(existingNumberOfLikes) + 1
             document.querySelector(`.activity-${activityId} .likes`).innerHTML = newNumberOfLikes
-          }
-          
-        })
+            }
+          })
       
       }
       
-
 
 
     // 🔥 LAB ENDS HERE 🔥
