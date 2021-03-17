@@ -55,16 +55,28 @@ let db = firebase.firestore()
     // Listen for the form submit and create/render the new post
     document.querySelector('form').addEventListener('submit', async function(event) {
       event.preventDefault()
-      let activityName = document.querySelector('#activityName').value
-      let activityImage = document.querySelector('#image-url').value
+      let Name = document.querySelector('#activityName').value
+      let Image = document.querySelector('#image-url').value
       let activityTripId = tripId
-      let activityNumberOfLikes = 0
-      let docRef = await db.collection('activity').add({ 
-        activityName: activityName,
-        activityImage: activityImage, 
-        activityTripId: activityTripId,
+
+      let response = await fetch (`http://localhost:8888/.netlify/functions/addactivity`, {
+          method: 'POST',
+          body: JSON.stringify({
+          activityName: Name,
+          activityImage: Image,
+          activityTripId: activityTripId
+
+        })
       })
-      let activityId = docRef.id // the newly created document's ID
+
+      let json = await response.json()
+      console.log(json)
+      let activityId = json.activityId
+      let activityName = json.activityName
+      let activityImage = json.activityImage
+      let activityNumberOfLikes = json.activityNumberOfLikes
+
+
       document.querySelector('#activityName').value = '' 
       document.querySelector('#image-url').value = '' // clear the image url field
       renderPost(activityId, activityName, activityImage, activityNumberOfLikes)
