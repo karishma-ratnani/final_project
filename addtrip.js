@@ -3,13 +3,13 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       // Signed in
       let db = firebase.firestore()
-      console.log('signed in')
+      // console.log('signed in')
 
 
-      db.collection('users').doc(user.uid).set({
-        name: user.displayName,
-        email: user.email
-        })
+      // db.collection('users').doc(user.uid).set({
+      //   name: user.displayName,
+      //   email: user.email
+      //   })
 
         //sign-out button
       document.querySelector('.sign-out').innerHTML = `
@@ -39,7 +39,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         // let tripName = document.querySelector('#tripname').value
         let tripLoc = document.querySelector('#triplocation').value
 
-        let response = await fetch (`http://localhost:8888/.netlify/functions/addtrip`, {
+        let response = await fetch (`.netlify/functions/addtrip`, {
           method: 'POST',
           body: JSON.stringify({
           tripLocation: tripLoc

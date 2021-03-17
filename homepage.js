@@ -2,14 +2,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
   if (user) {
       // Signed in
-        let db = firebase.firestore()
-        console.log('signed in')
+        // let db = firebase.firestore()
+        // console.log('signed in')
         
-        db.collection('users').doc(user.uid).set({
-            name: user.displayName,
-            email: user.email
+        // db.collection('users').doc(user.uid).set({
+        //     name: user.displayName,
+        //     email: user.email
         
-        })
+        // })
 
         //sign-out button
         document.querySelector('.sign-out').innerHTML = `
@@ -33,7 +33,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
         // list of created trips
 
-        let response = await fetch(`http://localhost:8888/.netlify/functions/trip`)
+        let response = await fetch(`.netlify/functions/trip`)
         let trips = await response.json()
 
         for (let i=0; i< trips.length; i++){

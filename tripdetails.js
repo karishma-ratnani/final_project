@@ -8,16 +8,16 @@ console.log(tripId)
 let db = firebase.firestore()
 
   if (user) {
-    // Signed in
-    console.log('signed in')
-    let db = firebase.firestore()
+    // // Signed in
+    // console.log('signed in')
+    // let db = firebase.firestore()
 
 
-    // Ensure the signed-in user is in the users collection
-    db.collection('users').doc(user.uid).set({
-      name: user.displayName,
-      email: user.email
-    })
+    // // Ensure the signed-in user is in the users collection
+    // db.collection('users').doc(user.uid).set({
+    //   name: user.displayName,
+    //   email: user.email
+    // })
 
     document.querySelector('.sign-out').innerHTML = `
         <button class="text-pink-500 underline sign-out">Sign Out</button>`
@@ -38,7 +38,7 @@ let db = firebase.firestore()
         })
 
     //title
-    let response = await fetch(`http://localhost:8888/.netlify/functions/trip`)
+    let response = await fetch(`/.netlify/functions/trip`)
     let trips = await response.json()
     for (let i=0; i< trips.length; i++){
         let trip = trips[i]
@@ -84,7 +84,7 @@ let db = firebase.firestore()
 
 
     //show all activities
-    let response2 = await fetch(`http://localhost:8888/.netlify/functions/activity?tripId=${tripId}`)
+    let response2 = await fetch(`/.netlify/functions/activity?tripId=${tripId}`)
     let activity = await response2.json()
    
     for (let i=0; i<activity.length; i++) {
@@ -93,7 +93,7 @@ let db = firebase.firestore()
         let activityName = activities.activityName
         let activityImage = activities.activityImage
 
-        let response = await fetch(`http://localhost:8888/.netlify/functions/likes?activityId=${activityId}`)
+        let response = await fetch(`.netlify/functions/likes?activityId=${activityId}`)
         let likes = await response.json()
             let activityNumberOfLikes = likes.length
             renderPost(activityId, activityName, activityImage, activityNumberOfLikes)
@@ -121,7 +121,7 @@ let db = firebase.firestore()
           console.log(`activity ${activityId} like button clicked!`)
           let currentUserId = firebase.auth().currentUser.uid
       
-          let response = await fetch (`http://localhost:8888/.netlify/functions/addlikes`, {
+          let response = await fetch (`/.netlify/functions/addlikes`, {
             method: 'POST',
             body: JSON.stringify({
               activityId: activityId,
