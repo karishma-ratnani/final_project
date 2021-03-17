@@ -25,7 +25,7 @@ let db = firebase.firestore()
       document.querySelector('.sign-out').addEventListener('click', function(event) {
         console.log('sign out clicked')
         firebase.auth().signOut()
-        document.location.href = 'homepage.html'
+        document.location.href = 'index.html'
         })
 
         //homepage button
@@ -34,7 +34,7 @@ let db = firebase.firestore()
     
       document.querySelector('.homepage').addEventListener('click', function(event) {
        // console.log('home clicked')
-        document.location.href = 'homepage.html'
+        document.location.href = 'index.html'
         })
 
     //title

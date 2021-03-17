@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.querySelector('.sign-out').addEventListener('click', function(event) {
         console.log('sign out clicked')
         firebase.auth().signOut()
-        document.location.href = 'homepage.html'
+        document.location.href = 'index.html'
         })
 
         //homepage button
@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     
       document.querySelector('.homepage').addEventListener('click', function(event) {
         console.log('home clicked')
-        document.location.href = 'homepage.html'
+        document.location.href = 'index.html'
         })
 
 
@@ -54,7 +54,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
   
           console.log(`new destination with ID ${tripId} created`)
         
-          window.location = "homepage.html"
+          window.location = "index.html"
         })
     
 
