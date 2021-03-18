@@ -13,7 +13,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         //sign-out button
         document.querySelector('.sign-out').innerHTML = `
-        <button class="sign-out text-pink-500 underline p-2 w-full text-right">Sign Out</button>`
+        <button class="sign-out text-blue-500 underline p-2 w-full text-right">Sign Out</button>`
        
         document.querySelector('.sign-out').addEventListener('click', function(event) {
           console.log('sign out clicked')
@@ -33,7 +33,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
         // list of created trips
 
-        let response = await fetch(`.netlify/functions/trip`)
+        let response = await fetch(`/.netlify/functions/trip`)
         let trips = await response.json()
 
         for (let i=0; i< trips.length; i++){
@@ -43,7 +43,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
             document.querySelector('.trips').insertAdjacentHTML('beforeEnd',
             `
-            <a href="tripdetails.html?tripId=${tripId}"><span class="font-bold text-3xl px-24 border border-gray-400 rounded bg-blue-300"</span>${tripLocation}</a>
+           <button class="m-3"> <a href="tripdetails.html?tripId=${tripId}"><span class="hover:bg-blue-500 font-bold text-3xl px-24 border border-gray-400 rounded bg-blue-300"</span>${tripLocation}</a>
+           </button>
             `)
             
         }
