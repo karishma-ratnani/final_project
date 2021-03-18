@@ -59,7 +59,7 @@ console.log(tripId)
       let Image = document.querySelector('#image-url').value
       let activityTripId = tripId
 
-      let response = await fetch (`http://localhost:8888/.netlify/functions/addactivity`, {
+      let response = await fetch (`.netlify/functions/addactivity`, {
           method: 'POST',
           body: JSON.stringify({
           activityName: Name,
