@@ -5,7 +5,7 @@ let queryString = new URLSearchParams(document.location.search)
 let tripId = queryString.get('tripId')
 console.log(tripId)
 
-let db = firebase.firestore()
+// let db = firebase.firestore()
 
   if (user) {
     // // Signed in
