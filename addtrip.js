@@ -2,7 +2,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     if (user) {
 
       // Signed in
-      let db = firebase.firestore()
+      // let db = firebase.firestore()
       // console.log('signed in')
 
 
