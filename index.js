@@ -43,7 +43,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
             document.querySelector('.trips').insertAdjacentHTML('beforeEnd',
             `
-           <button class="m-3"> <a href="tripdetails.html?tripId=${tripId}"><span class="hover:bg-blue-500 font-bold text-3xl px-24 border border-gray-400 rounded bg-blue-300"</span>${tripLocation}</a>
+           <button class="m-3"> <a href="tripdetails.html?tripId=${tripId}"><span class="hover:bg-blue-500 font-bold text-3xl px-2 border border-gray-400 rounded bg-blue-300"</span>${tripLocation}</a>
            </button>
             `)
             
