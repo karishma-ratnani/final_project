@@ -13,7 +13,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         //sign-out button
       document.querySelector('.sign-out').innerHTML = `
-        <button class="text-pink-500 underline sign-out">Sign Out</button>`
+        <button class="text-blue-500 underline sign-out">Sign Out</button>`
     
       document.querySelector('.sign-out').addEventListener('click', function(event) {
         console.log('sign out clicked')
@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         //homepage button
       document.querySelector('.homepage').innerHTML = `
-        <button class="text-pink-500 underline homepage">Home</button>`
+        <button class="text-blue-500 underline homepage">Home</button>`
     
       document.querySelector('.homepage').addEventListener('click', function(event) {
         console.log('home clicked')

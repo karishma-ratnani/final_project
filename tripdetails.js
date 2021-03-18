@@ -47,7 +47,7 @@ console.log(tripId)
         if (tripIds == tripId) {
             var tripLocationOfficial = trip.location
             document.querySelector('.title').insertAdjacentHTML('beforeEnd',
-            `<div class= " w-full bg-yellow-100 text-center text-blue-500 font-bold text-6xl py-3"> ${tripLocationOfficial} </div>`)
+            `<div class= " w-full bg-yellow-100 text-center text-green-500 font-bold text-6xl py-3"> ${tripLocationOfficial} </div>`)
 
         }
     }
