@@ -20,7 +20,7 @@ let db = firebase.firestore()
     // })
 
     document.querySelector('.sign-out').innerHTML = `
-        <button class="text-pink-500 underline sign-out">Sign Out</button>`
+        <button class="text-blue-500 underline sign-out">Sign Out</button>`
     
       document.querySelector('.sign-out').addEventListener('click', function(event) {
         console.log('sign out clicked')
@@ -30,7 +30,7 @@ let db = firebase.firestore()
 
         //homepage button
       document.querySelector('.homepage').innerHTML = `
-        <button class="text-pink-500 underline homepage">Home</button>`
+        <button class="text-blue-500 underline homepage">Home</button>`
     
       document.querySelector('.homepage').addEventListener('click', function(event) {
        // console.log('home clicked')
@@ -47,7 +47,7 @@ let db = firebase.firestore()
         if (tripIds == tripId) {
             var tripLocationOfficial = trip.location
             document.querySelector('.title').insertAdjacentHTML('beforeEnd',
-            `<div> Hot Spots - ${tripLocationOfficial} </div>`)
+            `<div class= " w-full bg-yellow-100 text-center text-blue-500 font-bold text-6xl py-3"> ${tripLocationOfficial} </div>`)
 
         }
     }
